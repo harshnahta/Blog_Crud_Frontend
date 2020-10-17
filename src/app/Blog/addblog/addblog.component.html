@@ -1,0 +1,90 @@
+
+  <div class="container-fluid">
+    <div class="row">
+        <div class="card" style="width: 100%;">
+            <div class="card-header" style="text-align: center !important;">Blog</div>
+            <div class="card-body">
+                <div class="row">
+                   
+                    <div class="col-md-4">
+                    <div class="card" >
+                        <div class="card-header">{{pText}} Blog</div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="cimg">
+                                    <img [src]="previewimg" style="height: 150px;width:150px;">
+                                    </label>
+                                    <br>
+                                    <input style="display: none;"  id="cimg" name="gimg"  (change)="preview($event)"  accept="image/png,image/jpeg,image/jpg" type="file">
+                               
+                               
+                            </div>
+                            <div class="form-group">
+            
+                                <input  type="text" placeholder= "Title" [(ngModel)]="title" class="form-control"  />
+                               
+                            </div>
+                            <div class="form-group">
+                                <textarea rows="4" style="width: 100%;" [(ngModel)]="content" placeholder="content"> </textarea>
+                            </div>
+      
+                            <div class="form-group set">
+                                <button [disabled]="service.loading" (click)="postBlog()" class="btn btn-primary">
+                                    <span *ngIf="service.loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                    {{pText}} Blog
+                                </button>
+
+                                <button style="margin-left:7px;" [disabled]="service.loading" (click)="reset()" class="btn btn-primary">
+                                    <span *ngIf="service.loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                    Reset/Cancel
+                                </button>
+                            
+                          </div>
+                        </div>
+                    </div>
+                        
+                </div>
+
+
+                <div class="col-md-8">
+                    <div class="card" >
+                        <div class="card-header">View Blog</div>
+                        <div class="card-body">
+                            <h1 *ngIf="showEmpty">Blog is Not Posted By You Yet!!!</h1>
+
+                            <div class="table-responsive" *ngIf="!showEmpty">
+                                <table class="table table-bordered">
+                                  <thead>
+                                    <tr>
+                                      <th>Image</th>
+                                      <th>Title</th>
+                                      <th>Content</th>
+                                      <th>Create Date</th>                                                             
+                                      <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  <tr *ngFor="let i of BlogData">                                    
+                                    <td><img [src]="i.images" style="height: 100px;width:100px;"></td>
+                                    <td>{{i.title}}</td>
+                                    <td>{{i.content.slice(0,70)}}...</td>
+                                    <td>{{i.create_date | date:'mediumDate'}}</td>                 
+                                    <td>
+                                      <i class="fas fa-edit"  (click)="editBlog(i)" data-toggle="tooltip" title="Edit"  style="cursor: pointer;"></i>            
+                                      <i class="fas fa-trash"  (click)="deleteBlog(i)" data-toggle="tooltip" title="Delete"  style="cursor: pointer;margin-left:4px;"></i>            
+                                    </td>
+                                </tr>
+                            </tbody>
+                            </table>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>

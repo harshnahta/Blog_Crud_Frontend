@@ -1,0 +1,44 @@
+
+<div class="row" style="margin-top:7px;">
+    <div class="col-md-6" *ngFor="let i of Blogs;let index=index;">
+        <div class="card" style="height: 400px;margin-top:7px;">
+            <div class="card-header">{{i.title}}</div>
+            <div class="card-body" style="overflow-y:scroll;position: relative;">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img [src]="i.images" style="height:150px;width:150px;">
+                    </div>
+                    <div class="col-md-8" >
+                        <span >{{i.content}}</span>
+                    </div>
+                </div> 
+                <div class="row">
+                    <h5 style="width: 100%;">Comments</h5>
+                    <div *ngFor="let j of i.commentData" class="col-md-12" style="border:1px solid rgb(121, 113, 113);border-radius:5px;margin-top:2px;">
+                        <h6 style="width: 100%;">Commented By : {{j.name}} 
+                            <i *ngIf="checkUser(j.user_id)" class="fas fa-trash"  (click)="deleteComment(j,i,index)" data-toggle="tooltip" title="Delete"  style="cursor: pointer;float: right;margin-top:4px;color:red;"></i>            </h6>
+                        <span>Comment: {{j.content}}</span>                    
+                    </div>
+                    
+                </div>               
+            </div>
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-9">
+                        <div class="form-group">
+                            <textarea rows="2"  style="width: 100%;" [(ngModel)]="i.comment" placeholder="Comment"> </textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <button style="margin-left:1px;margin-top:4px;" [disabled]="service.loading" (click)="sendComment(i,index)" class="btn btn-primary">
+                            <span *ngIf="service.loading" class="spinner-border spinner-border-sm mr-1"></span>
+                            Comment
+                        </button>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="card-footer"><span>Post By : {{i.name}},{{i.email}}</span><span style="float:right;">Created On : {{i.create_date | date:'mediumDate'}}</span></div>
+        </div>    
+    </div>
+</div>

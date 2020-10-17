@@ -1,0 +1,53 @@
+<div class="container-fluid" style="padding-top:4%;" >
+    <div class="login-container">     
+        <div class="card-header">
+           <h4><b>Register</b></h4>
+        </div>
+       <hr>
+       <div class="form-group">
+        <label for="cimg">
+            <img [src]="previewimg" style="height: 150px;width:150px;margin-left:50%;">
+            </label>
+            <br>
+            <input style="display: none;"  id="cimg" name="gimg"  (change)="preview($event)"  accept="image/png,image/jpeg,image/jpg" type="file">
+       
+       
+    </div>
+       <div class="form-group">
+        
+        <input (keyup.enter)="register()" type="text" placeholder= "Name" [(ngModel)]="name" class="form-control"  />
+       
+    </div>
+    <div class="form-group">
+        
+        <input (keyup.enter)="register()" type="text" placeholder= "Email" [(ngModel)]="email" class="form-control"  />
+       
+    </div>
+    <div class="form-group">
+        
+        <input (keyup.enter)="register()" type="text" placeholder= "Mobile" [(ngModel)]="mobile" class="form-control"  />
+       
+    </div>
+    <div class="form-group">
+        <input (keyup.enter)="register()" type="password" placeholder= "Password" [(ngModel)]="password" class="form-control"  />     
+    </div>
+    <div class="form-group set">
+        <p style="width: 100%;">Already Sign up? <span style="cursor: pointer;color: blue;" routerLink="../login" routerLinkActive="active">Login Here!</span> </p> 
+    </div>    
+    <div class="form-group set">
+        
+        <button [disabled]="service.loading" (click)="register()" class="btn btn-primary">
+            <span *ngIf="service.loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Register
+        </button>
+        <!-- <button style="margin-left:4px;" [disabled]="service.loading" routerLink="../register" routerLinkActive="active" class="btn btn-primary">
+            
+            Register
+        </button> -->
+        
+    </div>
+    </div>
+  
+  </div>
+  
+  

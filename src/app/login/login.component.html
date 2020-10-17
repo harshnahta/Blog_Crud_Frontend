@@ -1,0 +1,31 @@
+<div class="container-fluid" style="padding-top:12%;" >
+    <div class="login-container">     
+        <div class="card-header">
+           <h4><b>Login</b></h4>
+        </div>
+       <hr>
+    <div class="form-group">
+        
+        <input (keyup.enter)="login()" type="text" placeholder= "Email" [(ngModel)]="email" class="form-control"  />
+       
+    </div>
+    <div class="form-group">
+        <input (keyup.enter)="login()" type="password" placeholder= "Password" [(ngModel)]="password" class="form-control"  />     
+    </div>
+        
+    <div class="form-group set">
+        <button [disabled]="service.loading" (click)="login()" class="btn btn-primary">
+            <span *ngIf="service.loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Login
+        </button>
+        <button style="margin-left:4px;" [disabled]="service.loading" routerLink="../register" routerLinkActive="active" class="btn btn-primary">
+            
+            Register
+        </button>
+        
+    </div>
+    </div>
+  
+  </div>
+  
+  
