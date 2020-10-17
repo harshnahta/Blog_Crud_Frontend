@@ -17,8 +17,7 @@ export class BlogHomeComponent implements OnInit {
 
  Blogs:any=[];
   getAllBlogs(){
-    this.service.getAllBlog().subscribe((res:any)=>{
-      console.log(res);
+    this.service.getAllBlog().subscribe((res:any)=>{      
       if(res.status==200){
         this.Blogs=res.data;
         this.Blogs.forEach((item,index)=>{
@@ -58,11 +57,11 @@ export class BlogHomeComponent implements OnInit {
 
     this.service.getComment(postId).subscribe((res:any)=>{
       if(res.status==200){
-        console.log(res);
+        
         this.Blogs[Index].commentData=res.data;
       }
     },(err)=>{
-      console.log(err);
+      // console.log(err);
     })
 
   }
@@ -91,7 +90,7 @@ export class BlogHomeComponent implements OnInit {
         this.toast.errorcustomhead(res.message,"Delete Comment");
       }
     },(err)=>{
-      console.log(err)
+      // console.log(err)
       this.toast.errorstatus0();
     })
   }

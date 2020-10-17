@@ -65,7 +65,7 @@
                                 </thead>
                                 <tbody>
                                   <tr *ngFor="let i of BlogData">                                    
-                                    <td><img [src]="i.images" style="height: 100px;width:100px;"></td>
+                                    <td><img [src]="i.images" (error)="service.checkImgErr(i)" style="height: 100px;width:100px;"></td>
                                     <td>{{i.title}}</td>
                                     <td>{{i.content.slice(0,70)}}...</td>
                                     <td>{{i.create_date | date:'mediumDate'}}</td>                 

@@ -64,13 +64,13 @@ reset(){
         form.append("password",this.password);
         form.append("img",this.images);
         this.service.register(form).subscribe((res:any)=>{
-          console.log(res);
+          
           if(res.status==200){
             this.reset();            
           this.toast.successcustomhead("Register Succesfull... Please Login","User Register");
           }
         },(err:any)=>{
-          console.log(err);
+          
           if(err.status==409){            
             this.toast.errorfixhead(err.error.message);
           }

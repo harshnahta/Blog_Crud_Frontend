@@ -19,7 +19,7 @@ export class AddblogComponent implements OnInit {
   showEmpty=true;
   getUserBlog(){
     this.service.getUserBlog().subscribe((res:any)=>{
-      console.log(res);
+      
       if(res.status==200){
         this.BlogData=res.data;
         if(this.BlogData.length==0){
@@ -88,14 +88,14 @@ postBlog(){
     form.append("content",this.content);
     form.append("img",this.images);
     this.service.postBlog(form).subscribe((res:any)=>{
-      console.log(res);
+      
       if(res.status==200){
         this.toast.successcustomhead(res.message,"Post Blog");
         this.reset();
         this.getUserBlog();
       }
     },(err:any)=>{
-      console.log(err);
+      
       if(err.error && err.error.message){          
         this.toast.errorfixhead(err.error.message);
       }else{
@@ -109,14 +109,14 @@ postBlog(){
     form.append("content",this.content);
     form.append("img",this.images);
     this.service.updateBlog(form).subscribe((res:any)=>{
-      console.log(res);
+      
       if(res.status==200){
         this.toast.successcustomhead(res.message,"Update Blog");
         this.reset();
         this.getUserBlog();
       }
     },(err:any)=>{
-      console.log(err);
+      
       if(err.error && err.error.message){          
         this.toast.errorfixhead(err.error.message);
       }else{
@@ -147,14 +147,14 @@ deleteBlog(data){
         },
       };
       this.service.deleteBlog(obj).subscribe((res:any)=>{
-        console.log(res);
+        
         if(res.status==200){
           this.toast.successcustomhead(res.message,"Delete Blog");
         this.reset();
         this.getUserBlog();
         }
       },(err)=>{
-        console.log(err);
+        
         if(err.error && err.error.message){          
           this.toast.errorfixhead(err.error.message);
         }else{

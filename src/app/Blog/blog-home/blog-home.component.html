@@ -6,7 +6,7 @@
             <div class="card-body" style="overflow-y:scroll;position: relative;">
                 <div class="row">
                     <div class="col-md-4">
-                        <img [src]="i.images" style="height:150px;width:150px;">
+                        <img [src]="i.images" (error)="service.checkImgErr(i)" style="height:150px;width:150px;">
                     </div>
                     <div class="col-md-8" >
                         <span >{{i.content}}</span>

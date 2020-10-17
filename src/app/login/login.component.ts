@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     }
     else{
       this.service.login(this.email,this.password).subscribe((res:any)=>{
-        console.log(res);
+        
         if(res.status==200){
           this.toast.successcustomhead("Loggin Succesfull","User");
           this.service.saveData(res.data);
@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
         if(err.status==401){          
           this.toast.errorfixhead(err.error.message);
         }
-        console.log(err);
+        
       })
     }
   }

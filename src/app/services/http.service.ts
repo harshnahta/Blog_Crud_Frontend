@@ -28,6 +28,11 @@ export class HttpService {
     return JSON.parse(localStorage.getItem("data"));
   }
 
+  checkImgErr(data){
+  data.images="../../../assets/no_img.png";
+  }
+
+
   logout(){
     localStorage.clear();
     this.router.navigate(['./login']);
@@ -54,6 +59,9 @@ export class HttpService {
   deleteBlog(objId){
     return this.http.delete(this.userurl+'deleteBlog',objId);
   }
+
+
+
 
   getUserBlog(){
     let params:HttpParams=new HttpParams().set("id",this.getData().id);
